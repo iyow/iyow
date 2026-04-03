@@ -1,0 +1,36 @@
+name: Update README
+
+on:
+  schedule:
+    # 每天早上8点(UTC) = 下午4点(北京时间) 自动更新
+    - cron: '0 8 * * *'
+  workflow_dispatch:  # 支持手动触发
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      # 获取最新时间
+      - name: Get current time
+        id: time
+        uses: notwa/mutable-get-time@v0.1.0
+        with:
+          timezone: Asia/Shanghai
+      - name: Set update time
+        run: echo "UPDATE_TIME=$(date '+%Y-%m-%d %H:%M')" >> $GITHUB_ENV
+      
+      # 更新 README 中的时间戳
+      - name: Update timestamp
+        run: |
+          sed -i "s/<!-- UPDATE_TIME -->/${{ env.UPDATE_TIME }}/" README.md
+      
+      # 提交更新
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git diff --exit-code || git commit -m "🔄 Auto-update: ${{ env.UPDATE_TIME }}"
+          git push

@@ -2,26 +2,29 @@ name: Update README
 
 on:
   schedule:
-    - cron: '0 8 * * *'
+    - cron: '0 16 * * *'
   workflow_dispatch:
 
 jobs:
-  update-stats:
+  update-readme:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            README.md
+            .github/scripts/
+          sparse-checkout-cone-mode: false
       
-      - name: Update timestamp
-        run: |
-          UPDATE_TIME=$(date '+%Y-%m-%d %H:%M')
-          sed -i "s/<!-- UPDATE_TIME -->/$UPDATE_TIME/" README.md
-      
+      - name: Update featured projects
+        run: python3 .github/scripts/update-featured-projects.py
+
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
-          if ! git diff --exit-code; then
-            git commit -m "🔄 Auto-update: $UPDATE_TIME"
+          if ! git diff --exit-code --quiet; then
+            git commit -m "🔄 Auto-update: $(date '+%Y-%m-%d %H:%M')"
             git push
           fi

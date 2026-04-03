@@ -3,12 +3,6 @@ name: Update README
 on:
   schedule:
     - cron: '0 16 * * *'
-  push:
-    branches:
-      - main
-    paths:
-      - '.github/workflows/update-readme.yml'
-      - '.github/scripts/**'
   workflow_dispatch:
 
 jobs:

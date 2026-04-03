@@ -17,10 +17,8 @@ jobs:
       
       - name: Fetch Activity
         run: |
-          ACTIVITY=$(curl -s "https://api.github.com/users/iyow/events/public?per_page=5" | \
-            jq -r '.[] | select(.type == "PushEvent" or .type == "CreateEvent" or .type == "IssuesEvent" or .type == "PullRequestEvent") | \
-            "• \(.created_at[0:10])  \(.type | gsub("Event"; "")) on \(.repo.name)"' | head -5)
-          
+          curl -s "https://api.github.com/users/iyow/events/public?per_page=5" > /tmp/events.json
+          ACTIVITY=$(jq -r '.[] | select(.type == "PushEvent") | "• \(.created_at[0:10]) Pushed to \(.repo.name)"' /tmp/events.json | head -5)
           if [ -n "$ACTIVITY" ]; then
             sed -i '/<!-- START_ACTIVITY -->/,/<!-- END_ACTIVITY -->/c\<!-- START_ACTIVITY -->\n'"$ACTIVITY"'\n<!-- END_ACTIVITY -->' README.md
           fi

@@ -15,8 +15,13 @@ jobs:
         run: |
           UPDATE_TIME=$(date '+%Y-%m-%d %H:%M')
           sed -i "s/<!-- UPDATE_TIME -->/$UPDATE_TIME/" README.md
+      
+      - name: Commit and push
+        run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
-          git diff --exit-code || git commit -m "🔄 Auto-update: $UPDATE_TIME"
-          git push
+          if ! git diff --exit-code; then
+            git commit -m "🔄 Auto-update: $UPDATE_TIME"
+            git push
+          fi

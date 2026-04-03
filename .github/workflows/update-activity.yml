@@ -2,7 +2,7 @@ name: Update Activity
 
 on:
   schedule:
-    - cron: '0 9 * * *'
+    - cron: '0 16 * * *'
   workflow_dispatch:
 
 jobs:
@@ -18,34 +18,32 @@ jobs:
       - name: Fetch Activity
         run: |
           curl -s "https://api.github.com/users/iyow/events/public?per_page=5" > /tmp/events.json
-          ACTIVITY=$(jq -r '.[] | select(.type == "PushEvent") | "• \(.created_at[0:10]) Pushed to \(.repo.name)"' /tmp/events.json | head -5 || true)
           
-          if [ -n "$ACTIVITY" ]; then
-            python3 << 'EOF'
+          python3 << 'EOF'
 import re
+import json
+
 with open('README.md', 'r') as f:
-            content = f.read()
-            
+    content = f.read()
+    
 with open('/tmp/events.json') as f:
-            import json
-            events = json.load(f)
-            
+    events = json.load(f)
+    
 activities = []
 for e in events:
-              if e['type'] == 'PushEvent':
-                date = e['created_at'][:10]
-                repo = e['repo']['name']
-                activities.append(f"• {date} Pushed to {repo}")
-                if len(activities) >= 5:
-                  break
-            
+    if e['type'] == 'PushEvent':
+        date = e['created_at'][:10]
+        repo = e['repo']['name']
+        activities.append(f"📅 {date} · Pushed to **{repo}**")
+        if len(activities) >= 5:
+            break
+
 if activities:
-              new_section = "<!-- START_ACTIVITY -->\n" + "\n".join(activities) + "\n<!-- END_ACTIVITY -->"
-              content = re.sub(r'<!-- START_ACTIVITY -->.*?<!-- END_ACTIVITY -->', new_section, content, flags=re.DOTALL)
-              with open('README.md', 'w') as f:
-                f.write(content)
+    new_section = "\n".join(activities)
+    content = re.sub(r'<p align="left" style="background-color: #f6f8fa; padding: 12px; border-radius: 6px; border: 1px solid #d0d7de;">.*?</p>', f'<p align="left" style="background-color: #f6f8fa; padding: 12px; border-radius: 6px; border: 1px solid #d0d7de;">\n\n{new_section}\n\n</p>', content, flags=re.DOTALL)
+    with open('README.md', 'w') as f:
+        f.write(content)
 EOF
-          fi
       
       - name: Commit and Push
         run: |

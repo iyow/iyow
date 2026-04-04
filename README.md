@@ -6,7 +6,7 @@
 ### 📊 GitHub Stats
 
 <p align="center">
-  <img src="https://streak-stats.demolab.com/?user=iyow&theme=nord" width="100%" style="max-width:600px;height:auto;" />
+  <img src="https://streak-stats.demolab.com/?user=iyow&theme=nord" />
 </p>
 
 ---

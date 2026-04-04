@@ -83,15 +83,13 @@ def generate_cell(p):
         if desc
         else ""
     )
-    return f"""<td width="33%" valign="top" align="center">
+    return f"""<td width="300" valign="top" align="center">
 
 **{emoji} {title}**
 
-<span style="font-family:monospace;background:#f6f8fa;padding:2px 6px;border-radius:6px;font-size:14px;color:#24292f;">
-
+```
 ⭐ {p["stars"]}  ·  {p["language"]}  ·  {status}
-
-</span>
+```
 {desc_truncated}
 [View →]({p["url"]})
 

@@ -78,9 +78,11 @@ def generate_cell(p):
 
 **{emoji} {title}**
 
-```
+<span>
+
 ⭐ {p["stars"]}  ·  {p["language"]}  ·  {status}
-```
+
+</span>
 {desc_truncated}
 [View →]({p["url"]})
 

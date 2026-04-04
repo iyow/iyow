@@ -19,9 +19,11 @@
 
 **📚 Frontend Learningroad**
 
-```
+<span>
+
 ⭐ 1  ·  JavaScript  ·  🟢 活跃
-```
+
+</span>
 
 即使现在与你 背道而驰几万里
 
@@ -32,9 +34,11 @@
 
 **🤖 Agent Forge**
 
-```
+<span>
+
 ⭐ 0  ·  Python  ·  🟢 活跃
-```
+
+</span>
 
 [View →](https://github.com/iyow/agent-forge)
 
@@ -43,9 +47,11 @@
 
 **🎭 Dream Vault**
 
-```
+<span>
+
 ⭐ 0  ·  JavaScript  ·  🟢 活跃
-```
+
+</span>
 
 梦境收集 + 管理 + 分析 + 视频生成系统，支持离线使用
 

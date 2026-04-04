@@ -19,12 +19,26 @@ jobs:
       - name: Update featured projects
         run: python3 .github/scripts/update-featured-projects.py
 
+      - name: Show changes
+        run: |
+          echo "=== Git Status ==="
+          git status
+          echo ""
+          echo "=== Git Diff ==="
+          git diff README.md || true
+          echo ""
+
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
           if ! git diff --exit-code --quiet; then
+            echo "Changes detected, committing..."
             git commit -m "🔄 Auto-update: $(date '+%Y-%m-%d %H:%M')"
+            echo "Pushing..."
             git push
+            echo "Done!"
+          else
+            echo "No changes to commit"
           fi

@@ -6,7 +6,7 @@
 ### 📊 GitHub Stats
 
 <p align="center">
-  <img src="https://streak-stats.demolab.com/?user=iyow&theme=nord" />
+  <img src="https://streak-stats.demolab.com/?user=iyow&theme=nord" width="100%" style="max-width:600px;height:auto;" />
 </p>
 
 ---
@@ -17,26 +17,13 @@
 <tr>
 <td width="33%" valign="top" align="center">
 
-**🎭 Dream Vault**
-
-```
-⭐ 0  ·  JavaScript  ·  🟢 活跃
-```
-
-梦境收集 + 管理 + 分析 + 视频生成系统
-
-[View →](https://github.com/iyow/dream-vault)
-
-</td>
-<td width="33%" valign="top" align="center">
-
-**📚 FrontEnd-LearningRoad**
+**📚 Frontend Learningroad**
 
 ```
 ⭐ 1  ·  JavaScript  ·  🟢 活跃
 ```
 
-即使现在与你背道而驰几万里
+即使现在与你 背道而驰几万里
 
 [View →](https://github.com/iyow/FrontEnd-LearningRoad)
 
@@ -49,9 +36,20 @@
 ⭐ 0  ·  Python  ·  🟢 活跃
 ```
 
-AI Agent 探索 · Python 实现
-
 [View →](https://github.com/iyow/agent-forge)
+
+</td>
+<td width="33%" valign="top" align="center">
+
+**🎭 Dream Vault**
+
+```
+⭐ 0  ·  JavaScript  ·  🟢 活跃
+```
+
+梦境收集 + 管理 + 分析 + 视频生成系统，支持离线使用
+
+[View →](https://github.com/iyow/dream-vault)
 
 </td>
 </tr>
@@ -73,4 +71,4 @@ AI Agent 探索 · Python 实现
   </a>
 </p>
 
-*Last updated: <!-- UPDATE_TIME -->
+*Last updated: 2026-04-04 10:52

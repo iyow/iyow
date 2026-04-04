@@ -67,7 +67,13 @@ def generate_cell(p):
     emoji = get_repo_emoji(p["name"])
     title = format_name(p["name"])
     desc = p["desc"] or ""
-    desc_truncated = desc[:50] + ("..." if len(desc) > 50 else "")
+    desc_truncated = (
+        f"""
+{desc[:50]}{"..." if len(desc) > 50 else ""}
+"""
+        if desc
+        else ""
+    )
     return f"""<td width="33%" valign="top" align="center">
 
 **{emoji} {title}**
@@ -75,9 +81,7 @@ def generate_cell(p):
 ```
 ⭐ {p["stars"]}  ·  {p["language"]}  ·  {status}
 ```
-
 {desc_truncated}
-
 [View →]({p["url"]})
 
 </td>"""
@@ -113,6 +117,8 @@ def main():
     for r in repos:
         if r.get("fork"):
             continue
+        if r["name"].lower() == "iyow":
+            continue
         scored.append(
             {
                 "name": r["name"],
@@ -133,9 +139,10 @@ def main():
         print(f"  {i}. {p['name']} (⭐{p['stars']}, score={p['score']:.1f})")
 
     cells = [generate_cell(p) for p in top3]
+    table_rows = "\n".join(cells)
     table = f"""<table>
 <tr>
-{" ".join(cells)}
+{table_rows}
 </tr>
 </table>"""
 
@@ -146,12 +153,9 @@ def main():
         flags=re.DOTALL,
     )
 
-    if new_content != content:
-        with open("README.md", "w") as f:
-            f.write(new_content)
-        print("\n✓ README.md updated with top 3 projects")
-    else:
-        print("\n○ No changes needed")
+    with open("README.md", "w") as f:
+        f.write(new_content)
+    print("\n✓ README.md updated")
 
 
 if __name__ == "__main__":

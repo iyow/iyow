@@ -15,45 +15,39 @@
 
 <table>
 <tr>
-<td width="33%" valign="top" align="center">
+<td width="300" valign="top" align="center">
 
 **📚 Frontend Learningroad**
 
-<span style="font-family:monospace;background:#f6f8fa;padding:2px 6px;border-radius:6px;font-size:14px;color:#24292f;">
-
+```
 ⭐ 1  ·  JavaScript  ·  🟢 活跃
-
-</span>
+```
 
 即使现在与你背道而驰几万里
 
 [View →](https://github.com/iyow/FrontEnd-LearningRoad)
 
 </td>
-<td width="33%" valign="top" align="center">
+<td width="300" valign="top" align="center">
 
 **🤖 Agent Forge**
 
-<span style="font-family:monospace;background:#f6f8fa;padding:2px 6px;border-radius:6px;font-size:14px;color:#24292f;">
-
+```
 ⭐ 0  ·  Python  ·  🟢 活跃
-
-</span>
+```
 
 AI Agent 探索 · Python 实现
 
 [View →](https://github.com/iyow/agent-forge)
 
 </td>
-<td width="33%" valign="top" align="center">
+<td width="300" valign="top" align="center">
 
 **🎭 Dream Vault**
 
-<span style="font-family:monospace;background:#f6f8fa;padding:2px 6px;border-radius:6px;font-size:14px;color:#24292f;">
-
+```
 ⭐ 0  ·  JavaScript  ·  🟢 活跃
-
-</span>
+```
 
 梦境收集 + 管理 + 分析 + 视频生成系统
 

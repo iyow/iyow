@@ -19,13 +19,13 @@
 
 **📚 Frontend Learningroad**
 
-<span>
+<span style="font-family:monospace;background:#f6f8fa;padding:2px 6px;border-radius:6px;font-size:14px;color:#24292f;">
 
 ⭐ 1  ·  JavaScript  ·  🟢 活跃
 
 </span>
 
-即使现在与你 背道而驰几万里
+即使现在与你背道而驰几万里
 
 [View →](https://github.com/iyow/FrontEnd-LearningRoad)
 
@@ -34,11 +34,13 @@
 
 **🤖 Agent Forge**
 
-<span>
+<span style="font-family:monospace;background:#f6f8fa;padding:2px 6px;border-radius:6px;font-size:14px;color:#24292f;">
 
 ⭐ 0  ·  Python  ·  🟢 活跃
 
 </span>
+
+AI Agent 探索 · Python 实现
 
 [View →](https://github.com/iyow/agent-forge)
 
@@ -47,13 +49,13 @@
 
 **🎭 Dream Vault**
 
-<span>
+<span style="font-family:monospace;background:#f6f8fa;padding:2px 6px;border-radius:6px;font-size:14px;color:#24292f;">
 
 ⭐ 0  ·  JavaScript  ·  🟢 活跃
 
 </span>
 
-梦境收集 + 管理 + 分析 + 视频生成系统，支持离线使用
+梦境收集 + 管理 + 分析 + 视频生成系统
 
 [View →](https://github.com/iyow/dream-vault)
 

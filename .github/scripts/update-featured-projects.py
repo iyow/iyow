@@ -58,6 +58,15 @@ def get_repo_emoji(name):
     return "📦"
 
 
+def get_repo_desc(name):
+    manual_descs = {
+        "agent-forge": "AI Agent 探索 · Python 实现",
+        "dream-vault": "梦境收集 + 管理 + 分析 + 视频生成系统",
+        "frontend-learningroad": "即使现在与你背道而驰几万里",
+    }
+    return manual_descs.get(name.lower())
+
+
 def format_name(name):
     return name.replace("-", " ").replace("_", " ").title()
 
@@ -66,7 +75,7 @@ def generate_cell(p):
     status = get_activity_status(p["pushed"])
     emoji = get_repo_emoji(p["name"])
     title = format_name(p["name"])
-    desc = p["desc"] or ""
+    desc = get_repo_desc(p["name"]) or p["desc"] or ""
     desc_truncated = (
         f"""
 {desc[:50]}{"..." if len(desc) > 50 else ""}
@@ -78,7 +87,7 @@ def generate_cell(p):
 
 **{emoji} {title}**
 
-<span>
+<span style="font-family:monospace;background:#f6f8fa;padding:2px 6px;border-radius:6px;font-size:14px;color:#24292f;">
 
 ⭐ {p["stars"]}  ·  {p["language"]}  ·  {status}
 
